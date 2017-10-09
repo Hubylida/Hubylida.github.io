@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="前端/安全">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Yuan">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="对象数组的一些方法"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="前端/安全" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Yuan"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>对象数组的一些方法 - Yuan</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/LHHYuan/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+   <link href="/LHHYuan/favicon.ico" rel="icon" type="image/x-ico">
+    
+	
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/LHHYuan/">回到首页</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/LHHYuan/categories/Study">
+                            
+                                Study
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/LHHYuan/categories/随笔">
+                            
+                                随笔
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/LHHYuan/categories/leetcode">
+                            
+                                leetcode
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/LHHYuan/Source">
+                            
+                                Source
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="https://github.com/Hubylida">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('http://ou2r9nim8.bkt.clouddn.com/1.png')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>对象数组的一些方法</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2017-09-18
+                        
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+<a href="/LHHYuan/categories/Study/">Study</a>
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><p>for…in适合以任意顺序遍历一个对象的可枚举属性。</p>
+<ul>
+<li><p>只能遍历可枚举的属性，从构造函数继承的属性也可以遍历到。</p>
+</li>
+<li><p>for…in不适合迭代一个下标很重要的Array，因为它是无序的遍历。</p>
+</li>
+<li><p>数组适合用Array.prototype.forEach()或for…of循环</p>
+</li>
+</ul>
+<p>下面的函数接受一个对象作为参数。被调用时迭代传入对象的所有可枚举属性然后返回一个所有属性名和其对应值的字符串。</p>
+<pre><code>var obj = {a:1, b:2, c:3};
+
+for (var prop in obj) {
+    console.log(&quot;obj.&quot; + prop + &quot; = &quot; + obj[prop]);
+}
+
+// Output:
+// &quot;obj.a = 1&quot;
+// &quot;obj.b = 2&quot;
+// &quot;obj.c = 3&quot;                                                     
+</code></pre><p>下面的函数阐述了 hasOwnProperty() 的用法: 隐藏的继承属性将不会被显示。</p>
+<pre><code>var triangle = {a:1, b:2, c:3};
+
+function ColoredTriangle() {
+    this.color = &quot;red&quot;;
+}
+
+ColoredTriangle.prototype = triangle;
+
+    var obj = new ColoredTriangle();
+
+for (var prop in obj) {
+    if( obj.hasOwnProperty( prop ) ) {
+    console.log(&quot;o.&quot; + prop + &quot; = &quot; + obj[prop]);
+} 
+}
+
+// Output:
+// &quot;o.color = red&quot;
+</code></pre><h2 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h2><ul>
+<li><p>如果你删除的属性在对象上不存在，那么delete将不会起作用，但仍会返回true</p>
+</li>
+<li><p>如果 delete 操作符删除成功，则被删除的属性将从所属的对象上彻底消失。然后，如果该对象的原型链上有一个同名属性，则该对象会从原型链上继承该同名属性。（也就是说delete操作只会在自身的属性上起作用）</p>
+</li>
+<li><p>任何使用 var 声明的属性不能从全局作用域或函数的作用域中删除。</p>
+<ul>
+<li>这样的话，delete操作不能删除任何在全局作用域中的函数（无论这个函数是来自于函数声明或函数表达式）</li>
+<li>除了在全局作用域中的函数不能被删除，在对象(object)中的函数是能够用delete操作删除的。</li>
+</ul>
+</li>
+<li><p>任何用let或const声明的属性不能够从它被声明的作用域中删除。</p>
+</li>
+<li><p>不可设置的(Non-configurable)属性不能被移除。这意味着像Math, Array, Object内置对象的属性以及使用Object.defineProperty()方法设置为不可设置的属性不能被删除。</p>
+</li>
+</ul>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><pre><code>ar Employee = {
+    age: 28,
+    name: &apos;abc&apos;,
+    designation: &apos;developer&apos;
+}
+
+console.log(delete Employee.name);   // returns true
+console.log(delete Employee.age);    // returns true
+
+// 当试着删除一个不存在的属性时
+// 同样会返回true
+console.log(delete Employee.salary); // returns true
+</code></pre><h3 id="不可配置的属性"><a href="#不可配置的属性" class="headerlink" title="不可配置的属性"></a>不可配置的属性</h3><pre><code>var Employee = {};
+Object.defineProperty(Employee, &apos;name&apos;,{configurable: false});
+
+console.log(delete Employee.name); //return false
+</code></pre><p>var, let以及const创建的不可设置的属性不能被delete操作删除。</p>
+<pre><code>var nameOther = &apos;XYZ&apos;;
+
+// We can access this global property using:
+Object.getOwnPropertyDescriptor(window, &apos;nameOther&apos;);  
+
+// output: Object {value: &quot;XYZ&quot;, 
+//                  writable: true, 
+//                  enumerable: true,
+//                  configurable: false}
+
+// 因为“nameOther”使用var关键词添加，
+// 它被设置为不可设置（non-configurable）
+delete nameOther;   // return false
+</code></pre><h3 id="for…of"><a href="#for…of" class="headerlink" title="for…of"></a>for…of</h3><p>for…of语句在可迭代对象(包括 Array, Map, Set, String, TypedArray，arguments 对象等等)上创建一个迭代循环，对每个不同属性的属性值,调用一个自定义的有执行语句的迭代挂钩.</p>
+<p><strong>迭代Array</strong></p>
+<pre><code>let iterable = [10, 20, 30];
+
+for (let value of iterable) {
+value += 1;
+console.log(value);
+}
+// 11
+// 21
+// 31
+</code></pre><p><strong>迭代String</strong></p>
+<pre><code>let iterable = &quot;boo&quot;;
+
+for (let value of iterable) {
+    console.log(value);
+}
+// &quot;b&quot;
+// &quot;o&quot;
+// &quot;o&quot;
+</code></pre><p><strong>迭代DOM集合</strong></p>
+<p>迭代 DOM 元素集合,比如一个NodeList对象: 下面的例子演示给每一个article标签的p子标签添加一个 “read” 类.</p>
+<pre><code>let articleParagraphs = document.querySelectorAll(&quot;article &gt; p&quot;);
+
+for (let paragraph of articleParagraphs) {
+paragraph.classList.add(&quot;read&quot;);
+}
+</code></pre><h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h3><pre><code>let a = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];
+
+a.forEach(function(element) {
+    console.log(element);
+});
+
+// a
+// b
+// c   
+</code></pre><p><strong>语法</strong></p>
+<pre><code>array.forEach(callback(currentValue, index, array){
+    //do something
+}, this)
+
+array.forEach(callback[, thisArg])
+</code></pre><p>currentValue: 数组中正在处理的当前元素</p>
+<p>index: 数组中正在处理的当前元素的索引</p>
+<p>array: 当前正在被forEach操作的数组</p>
+<pre><code>function logArrayElements(element, index, array) {
+    console.log(&quot;a[&quot; + index + &quot;] = &quot; + element);
+}
+
+// 注意索引2被跳过了，因为在数组的这个位置没有项
+[2, 5, ,9].forEach(logArrayElements);
+
+// a[0] = 2
+// a[1] = 5
+// a[3] = 9
+
+[2, 5,&quot;&quot; ,9].forEach(logArrayElements);
+// a[0] = 2
+// a[1] = 5
+// a[2] = 
+// a[3] = 9
+
+[2, 5, undefined ,9].forEach(logArrayElements);
+// a[0] = 2
+// a[1] = 5
+// a[2] = undefined
+// a[3] = 9
+
+
+let xxx;
+// undefined
+
+[2, 5, xxx ,9].forEach(logArrayElements);
+// a[0] = 2
+// a[1] = 5
+// a[2] = undefined
+// a[3] = 9
+</code></pre><p><strong>使用thisArg</strong></p>
+<p>thisArg，可选，指定callback的this参数。</p>
+<pre><code>function Counter() {
+    this.sum = 0;
+    this.count = 0;
+}
+
+Counter.prototype.add = function(array) {
+    array.forEach(function(entry) {
+        this.sum += entry;
+        ++this.count;
+    }, this);
+    //console.log(this);
+};
+
+var obj = new Counter();
+obj.add([1, 3, 5, 7]);
+
+obj.count; 
+// 4 === (1+1+1+1)
+obj.sum;
+// 16 === (1+3+5+7)
+</code></pre><p>因为thisArg参数 (this) 传给了forEach()，每次调用时，它都被传给callback函数，作为它的this值。</p>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><pre><code>var myMap = new Map();
+
+var keyObj = {},
+    keyFunc = function () {},
+    keyString = &quot;a string&quot;;
+
+// 添加键
+myMap.set(keyString, &quot;和键&apos;a string&apos;关联的值&quot;);
+myMap.set(keyObj, &quot;和键keyObj关联的值&quot;);
+myMap.set(keyFunc, &quot;和键keyFunc关联的值&quot;);
+
+myMap.size; // 3
+
+// 读取值
+myMap.get(keyString);    // &quot;和键&apos;a string&apos;关联的值&quot;
+myMap.get(keyObj);       // &quot;和键keyObj关联的值&quot;
+myMap.get(keyFunc);      // &quot;和键keyFunc关联的值&quot;
+
+myMap.get(&quot;a string&quot;);   // &quot;和键&apos;a string&apos;关联的值&quot;
+                        // 因为keyString === &apos;a string&apos;
+myMap.get({});           // undefined, 因为keyObj !== {}
+myMap.get(function() {}) // undefined, 因为keyFunc !== function () {}   
+</code></pre><h3 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h3><p> find() 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。</p>
+<pre><code>function isBigEnough(element){
+    return element &gt;= 15;
+}
+
+[12,5,8,130,44].find(isBigEnough);
+// 130
+</code></pre><p>只返回第一个满足的元素<br>findIndex()方法返回元素的索引</p>
+<pre><code>function isBigEnough(element){
+        return element &gt;= 15;
+    }
+
+[12,5,8,130,44].findIndex(isBigEnough);
+// 3
+</code></pre>
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+    <hr />
+    <h3>留言:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                        <li>
+                            <a href="https://twitter.com/" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://www.facebook.com/profile.php?id=100019094295164" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li>
+                            <a href="https://github.com/Hubylida" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">&copy; 2017 Yuan<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'Yuan';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+</body>
+
+</html>
