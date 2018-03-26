@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="自定义视频网页"/>
+        <meta property="og:title" content="http学习笔记--代理"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>自定义视频网页 - Yuan</title>
+    <title>http学习笔记--代理 - Yuan</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -112,7 +112,7 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">自定义视频网页</h1>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">http学习笔记--代理</h1>
             <p class="f4 fw3 pab-100px tc tc-m tl-ns">2017-09-18</p>
         </div>
     </div>
@@ -133,66 +133,23 @@
                     
 
                     <!-- Main Post Content -->
-                    <h2 id="我的视频网页"><a href="#我的视频网页" class="headerlink" title="我的视频网页"></a>我的视频网页</h2><p>本来应该早就写了,但是由于懒惰的原因拖到今天.</p>
-<p>技术栈: html css JQuery pure.css bootstrap.css </p>
-<p>自己手撸html和css,我对就自己的css水平很自信.</p>
-<p>使用了pure的图标库</p>
-<p>bootstrap主要是用来加入搜索框和按钮.</p>
-<p>图片放在七牛云上</p>
-<p>用jQuery写的第一个项目,熟悉了jQuery的基本操作</p>
-<p>这里要推荐一下几个学习jQuery的网站</p>
-<p><a href="http://www.nowamagic.net/librarys/books/contents/jquery" target="_blank" rel="external">Jquery魔法</a></p>
-<p><a href="http://i5ting.github.io/How-to-write-jQuery-plugin/build/jquery.plugin.html" target="_blank" rel="external">Jquery插件学习</a></p>
-<p>一边看一边跟着练这是最快的学习方法.</p>
-<p>界面的设计花了我不少的心思</p>
-<p><a href="https://www.jsman.top/videoPlayer/play.html" target="_blank" rel="external">点击查看demo</a></p>
-<p>贴几个重要的代码</p>
-<p>点击进度条效果和播放进度的实现</p>
-<p>两层重合的div,背景色不一样,一条隐藏,一条显示,点击时,用e.offset确定点击的位置相对于显示的一条的位置,隐藏的一条的宽度就是 x, 再用x和w之商作为百分比和视频长度相乘就得到当前视频跳转的播放位置.同时要改变css显示出效果.</p>
-<pre><code>$(&apos;.v_ctl_du&apos;).on(&apos;click&apos;, function (e) {
-    var w = $(&apos;#ctl_du_a&apos;).width(),
-        x = e.offsetX;
-    window.per = (x / w).toFixed(3);//全局变量
-    var duration = player.duration;
-    player.currentTime = (duration * window.per).toFixed(0);
-    $(&apos;#ctl_du_b&apos;).css(&apos;width&apos;, x + &apos;px&apos;);
-});
-</code></pre><p>在视频播放时要时刻获取播放的进度,然后改变css,进度条就会更新样式,时间也会跟着改变.</p>
-<pre><code>$player.on(&apos;timeupdate&apos;, function () {
-    var time = player.currentTime.toFixed(1);
-    minutes = Math.floor((time / 60) % 60);
-    seconds = Math.floor(time % 60);
-    if (seconds &lt; 10) {
-        seconds = &apos;0&apos; + seconds;
-    }
-    $(&apos;#ctl_dur&apos;).text(minutes + &apos;:&apos; + seconds);
-    var w = $(&apos;#ctl_du_a&apos;).width();
-    if (player.duration) {
-        window.per = (time / player.duration).toFixed(3);
-    } else {
-        window.per = 0;
-    }
-    $(&apos;#ctl_du_b&apos;).css(&apos;width&apos;, (window.per * w).toFixed(0) + &apos;px&apos;);
-    if (player.ended) {
-        pause();
-    }
-});
-</code></pre><p>动画效果的实现<br>animate三个参数,第一个是样式的对象,第二个是时间,第三个是一个回掉函数.</p>
-<pre><code>(function () {
-    var css = {
-        &apos;top&apos;: &apos;49%&apos;
-    };
-    $(&apos;.cloth_btn&apos;).animate(css, 400, rowBack);
-    function rowBack() {
-        if (css.top === &quot;49%&quot;) {
-            css.top = &quot;51%&quot;;
-        } else if (css.top === &quot;51%&quot;) {
-            css.top = &quot;49%&quot;;
-        }
-        $(&apos;.cloth_btn&apos;).animate(css, 400, rowBack);
-    }
-})();
-</code></pre>
+                    <h2 id="代理，网关，隧道"><a href="#代理，网关，隧道" class="headerlink" title="代理，网关，隧道"></a>代理，网关，隧道</h2><p><strong>代理</strong></p>
+<p>代理是一种有转发功能的应用程序，它扮演了位于服务器和客户端“中间人”的角色，接受客户端的请求并转发给放服务器，同时也接受服务器返回的响应并转发给客户端。</p>
+<p><strong>网关</strong></p>
+<p>网关是转发其他服务器通信数据的服务器，接受从客户端发送过来的请求时，它就像自己拥有资源的服务器一样对请求进行处理。<br>骚的操作。</p>
+<p><strong>隧道</strong></p>
+<p>隧道是在相隔甚远的客户端和服务器两者之间进行中转，并保持双方通信连接的应用程序。</p>
+<p><strong>缓存代理</strong></p>
+<p>代理转发响应时，缓存代理会预先将资源的副本保存在代理服务器上。</p>
+<p>当代理再次接受到相同资源的访问请求时，就可以不从源服务器哪里获取资源，而是直接将之前缓存的资源作为响应返回。</p>
+<p><strong>透明代理</strong></p>
+<p>转发请求或响应时，不对报文做任何加工的代理类型被称作是透明代理。反之对报文进行加工的处理称为非透明代理。</p>
+<p><strong>网关</strong></p>
+<p>网关能提供非HTTP服务，利用网关能提高通信的安全性，因为可以在客户端于网关之间的通信线路上加密以确保连接的安全性。比如，网关可以连接数据库，使用SQL查询数据。另外，在web购物网站结算时，网关可以和信用卡结算系统联动。</p>
+<p><strong>隧道</strong></p>
+<p>隧道可按要求建立起一条与其他服务器的通信线路，届时使用ssl等加密手段通信。</p>
+<p>隧道本身不去解析HTTP请求，请求在中转给服务器后会保持原样。</p>
+
                     
                     <!-- Tags Bottom -->
                     

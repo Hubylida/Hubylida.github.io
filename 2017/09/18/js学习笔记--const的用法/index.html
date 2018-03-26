@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="自定义视频网页"/>
+        <meta property="og:title" content="js学习笔记--const用法"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>自定义视频网页 - Yuan</title>
+    <title>js学习笔记--const用法 - Yuan</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -112,7 +112,7 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">自定义视频网页</h1>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">js学习笔记--const用法</h1>
             <p class="f4 fw3 pab-100px tc tc-m tl-ns">2017-09-18</p>
         </div>
     </div>
@@ -133,66 +133,26 @@
                     
 
                     <!-- Main Post Content -->
-                    <h2 id="我的视频网页"><a href="#我的视频网页" class="headerlink" title="我的视频网页"></a>我的视频网页</h2><p>本来应该早就写了,但是由于懒惰的原因拖到今天.</p>
-<p>技术栈: html css JQuery pure.css bootstrap.css </p>
-<p>自己手撸html和css,我对就自己的css水平很自信.</p>
-<p>使用了pure的图标库</p>
-<p>bootstrap主要是用来加入搜索框和按钮.</p>
-<p>图片放在七牛云上</p>
-<p>用jQuery写的第一个项目,熟悉了jQuery的基本操作</p>
-<p>这里要推荐一下几个学习jQuery的网站</p>
-<p><a href="http://www.nowamagic.net/librarys/books/contents/jquery" target="_blank" rel="external">Jquery魔法</a></p>
-<p><a href="http://i5ting.github.io/How-to-write-jQuery-plugin/build/jquery.plugin.html" target="_blank" rel="external">Jquery插件学习</a></p>
-<p>一边看一边跟着练这是最快的学习方法.</p>
-<p>界面的设计花了我不少的心思</p>
-<p><a href="https://www.jsman.top/videoPlayer/play.html" target="_blank" rel="external">点击查看demo</a></p>
-<p>贴几个重要的代码</p>
-<p>点击进度条效果和播放进度的实现</p>
-<p>两层重合的div,背景色不一样,一条隐藏,一条显示,点击时,用e.offset确定点击的位置相对于显示的一条的位置,隐藏的一条的宽度就是 x, 再用x和w之商作为百分比和视频长度相乘就得到当前视频跳转的播放位置.同时要改变css显示出效果.</p>
-<pre><code>$(&apos;.v_ctl_du&apos;).on(&apos;click&apos;, function (e) {
-    var w = $(&apos;#ctl_du_a&apos;).width(),
-        x = e.offsetX;
-    window.per = (x / w).toFixed(3);//全局变量
-    var duration = player.duration;
-    player.currentTime = (duration * window.per).toFixed(0);
-    $(&apos;#ctl_du_b&apos;).css(&apos;width&apos;, x + &apos;px&apos;);
-});
-</code></pre><p>在视频播放时要时刻获取播放的进度,然后改变css,进度条就会更新样式,时间也会跟着改变.</p>
-<pre><code>$player.on(&apos;timeupdate&apos;, function () {
-    var time = player.currentTime.toFixed(1);
-    minutes = Math.floor((time / 60) % 60);
-    seconds = Math.floor(time % 60);
-    if (seconds &lt; 10) {
-        seconds = &apos;0&apos; + seconds;
-    }
-    $(&apos;#ctl_dur&apos;).text(minutes + &apos;:&apos; + seconds);
-    var w = $(&apos;#ctl_du_a&apos;).width();
-    if (player.duration) {
-        window.per = (time / player.duration).toFixed(3);
-    } else {
-        window.per = 0;
-    }
-    $(&apos;#ctl_du_b&apos;).css(&apos;width&apos;, (window.per * w).toFixed(0) + &apos;px&apos;);
-    if (player.ended) {
-        pause();
-    }
-});
-</code></pre><p>动画效果的实现<br>animate三个参数,第一个是样式的对象,第二个是时间,第三个是一个回掉函数.</p>
-<pre><code>(function () {
-    var css = {
-        &apos;top&apos;: &apos;49%&apos;
-    };
-    $(&apos;.cloth_btn&apos;).animate(css, 400, rowBack);
-    function rowBack() {
-        if (css.top === &quot;49%&quot;) {
-            css.top = &quot;51%&quot;;
-        } else if (css.top === &quot;51%&quot;) {
-            css.top = &quot;49%&quot;;
-        }
-        $(&apos;.cloth_btn&apos;).animate(css, 400, rowBack);
-    }
-})();
-</code></pre>
+                    <h1 id="const用法"><a href="#const用法" class="headerlink" title="const用法"></a>const用法</h1><p>const定义一个常量</p>
+<pre><code>const a = 1;
+</code></pre><p>const的值不能改变，const的作用域和let一样，只在块级作用域内有效。</p>
+<p>const存在暂时性死区，可以认为存在变量提升，但是要等到执行完变量声明的语句后，调用才不会报错。</p>
+<p>const和let一样不能重复声明变量。</p>
+<p><strong>说点别的</strong></p>
+<p><code>Object.freeze</code> 方法</p>
+<pre><code>const foo = Object.freeze({});
+//常规模式下，下一行代码不报错
+//严格模式下，下一行代码报错
+foo.name = &quot;Yuan&quot;
+</code></pre><p>const保证的，并不是变量的值不能改动，而是变量指向的那个内存地处不能改动，不是变量的内存地址。</p>
+<pre><code>const foo = {};
+foo.name = &quot;Yuan&quot;; // 不报错
+
+foo = {} //报错
+</code></pre><blockquote>
+<p><strong><a href="http://es6.ruanyifeng.com/#docs/destructuring" target="_blank" rel="external">变量的结构赋值</a></strong></p>
+</blockquote>
+
                     
                     <!-- Tags Bottom -->
                     

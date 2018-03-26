@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="自定义视频网页"/>
+        <meta property="og:title" content="http学习笔记--url中的字符"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>自定义视频网页 - Yuan</title>
+    <title>http学习笔记--url中的字符 - Yuan</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -112,7 +112,7 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">自定义视频网页</h1>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">http学习笔记--url中的字符</h1>
             <p class="f4 fw3 pab-100px tc tc-m tl-ns">2017-09-18</p>
         </div>
     </div>
@@ -133,66 +133,33 @@
                     
 
                     <!-- Main Post Content -->
-                    <h2 id="我的视频网页"><a href="#我的视频网页" class="headerlink" title="我的视频网页"></a>我的视频网页</h2><p>本来应该早就写了,但是由于懒惰的原因拖到今天.</p>
-<p>技术栈: html css JQuery pure.css bootstrap.css </p>
-<p>自己手撸html和css,我对就自己的css水平很自信.</p>
-<p>使用了pure的图标库</p>
-<p>bootstrap主要是用来加入搜索框和按钮.</p>
-<p>图片放在七牛云上</p>
-<p>用jQuery写的第一个项目,熟悉了jQuery的基本操作</p>
-<p>这里要推荐一下几个学习jQuery的网站</p>
-<p><a href="http://www.nowamagic.net/librarys/books/contents/jquery" target="_blank" rel="external">Jquery魔法</a></p>
-<p><a href="http://i5ting.github.io/How-to-write-jQuery-plugin/build/jquery.plugin.html" target="_blank" rel="external">Jquery插件学习</a></p>
-<p>一边看一边跟着练这是最快的学习方法.</p>
-<p>界面的设计花了我不少的心思</p>
-<p><a href="https://www.jsman.top/videoPlayer/play.html" target="_blank" rel="external">点击查看demo</a></p>
-<p>贴几个重要的代码</p>
-<p>点击进度条效果和播放进度的实现</p>
-<p>两层重合的div,背景色不一样,一条隐藏,一条显示,点击时,用e.offset确定点击的位置相对于显示的一条的位置,隐藏的一条的宽度就是 x, 再用x和w之商作为百分比和视频长度相乘就得到当前视频跳转的播放位置.同时要改变css显示出效果.</p>
-<pre><code>$(&apos;.v_ctl_du&apos;).on(&apos;click&apos;, function (e) {
-    var w = $(&apos;#ctl_du_a&apos;).width(),
-        x = e.offsetX;
-    window.per = (x / w).toFixed(3);//全局变量
-    var duration = player.duration;
-    player.currentTime = (duration * window.per).toFixed(0);
-    $(&apos;#ctl_du_b&apos;).css(&apos;width&apos;, x + &apos;px&apos;);
-});
-</code></pre><p>在视频播放时要时刻获取播放的进度,然后改变css,进度条就会更新样式,时间也会跟着改变.</p>
-<pre><code>$player.on(&apos;timeupdate&apos;, function () {
-    var time = player.currentTime.toFixed(1);
-    minutes = Math.floor((time / 60) % 60);
-    seconds = Math.floor(time % 60);
-    if (seconds &lt; 10) {
-        seconds = &apos;0&apos; + seconds;
-    }
-    $(&apos;#ctl_dur&apos;).text(minutes + &apos;:&apos; + seconds);
-    var w = $(&apos;#ctl_du_a&apos;).width();
-    if (player.duration) {
-        window.per = (time / player.duration).toFixed(3);
-    } else {
-        window.per = 0;
-    }
-    $(&apos;#ctl_du_b&apos;).css(&apos;width&apos;, (window.per * w).toFixed(0) + &apos;px&apos;);
-    if (player.ended) {
-        pause();
-    }
-});
-</code></pre><p>动画效果的实现<br>animate三个参数,第一个是样式的对象,第二个是时间,第三个是一个回掉函数.</p>
-<pre><code>(function () {
-    var css = {
-        &apos;top&apos;: &apos;49%&apos;
-    };
-    $(&apos;.cloth_btn&apos;).animate(css, 400, rowBack);
-    function rowBack() {
-        if (css.top === &quot;49%&quot;) {
-            css.top = &quot;51%&quot;;
-        } else if (css.top === &quot;51%&quot;) {
-            css.top = &quot;49%&quot;;
-        }
-        $(&apos;.cloth_btn&apos;).animate(css, 400, rowBack);
-    }
-})();
-</code></pre>
+                    <h2 id="url中的-amp"><a href="#url中的-amp" class="headerlink" title="url中的#/?/&amp;"></a>url中的#/?/&amp;</h2><p>做了ctf的第二题，发现不懂为什么?a=240610708</p>
+<p>先说#号</p>
+<p><code>&lt;a&gt;</code>有锚的作用</p>
+<pre><code>&lt;a href=&quot;#abc&quot;&gt;定位到abc&lt;/a&gt;
+//...
+&lt;div name=&quot;abc&quot;&gt;我是被a定位的abc，有什么要问的？&lt;/div&gt;
+</code></pre><p>abc可以是name的值，也可以是id的值。</p>
+<p>仔细观察浏览器的地址栏会发现原来的地址后面会多出’#abc’,<br>试着手动输入’#abc’,页面也会自动跳转到<code>&lt;div name=&quot;abc&quot;&gt;//...&lt;/div&gt;</code>的位置。</p>
+<blockquote>
+<p>#是用来指导浏览器动作的，对服务器无用，因此#后面出现的字符不会发送到服务器端。在第一个#后面出现的字符都会被解析为位置标识符。</p>
+</blockquote>
+<p><strong>改变#后的字符，不会导致页面重载。</strong></p>
+<p><strong>改变#会改变浏览器的访问历史</strong></p>
+<p><strong>window.location.hash读取#值</strong></p>
+<p>读取时，用来判断网页状态是否发生改变；</p>
+<p>写入时，会在网页不发生重载时，创造一条访问记录；</p>
+<p><strong>onhashchange事件</strong></p>
+<p>当#值发生变化时，触发这个事件。</p>
+<h2 id=""><a href="#" class="headerlink" title="?"></a>?</h2><p>连接作用</p>
+<pre><code>http://www.xxx.com/Show.asp?id=77&amp;nameid=2905210001&amp;page=1
+</code></pre><p>清楚缓存</p>
+<pre><code>http://www.xxxxx.com/index.html 
+http://www.xxxxx.com/index.html?test123123
+</code></pre><p>两个url打开的页面一样，有问号，说明不调用缓存的内容，被认为是一个新地址。</p>
+<h2 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h2><p>不同参数之间的间隔符</p>
+<p>参考<br><a href="http://www.cnblogs.com/kaituorensheng/p/3776527.html" target="_blank" rel="external">http://www.cnblogs.com/kaituorensheng/p/3776527.html</a></p>
+
                     
                     <!-- Tags Bottom -->
                     
