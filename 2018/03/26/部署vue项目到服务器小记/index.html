@@ -136,13 +136,12 @@
                     <h1 id="部署vue项目到服务器"><a href="#部署vue项目到服务器" class="headerlink" title="部署vue项目到服务器"></a>部署vue项目到服务器</h1><h2 id="1-打包dist文件"><a href="#1-打包dist文件" class="headerlink" title="1. 打包dist文件"></a>1. 打包dist文件</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">run</span><span class="bash"> build</span></div></pre></td></tr></table></figure>
 <p>会生成一个dist文件夹，这个文件夹就是打包好的文件夹。</p>
 <h2 id="2-上传文件到服务器"><a href="#2-上传文件到服务器" class="headerlink" title="2. 上传文件到服务器"></a>2. 上传文件到服务器</h2><p>本地把dist，server， package.json打包为一个文件，再压缩为zip文件包，上传到服务器。</p>
-<h3 id="题外话："><a href="#题外话：" class="headerlink" title="题外话："></a>题外话：</h3><p>mac将本地文件上传到服务器上。</p>
-<p>打开终端，shell–新建远程连接</p>
-<p>填写远程服务器到ip和用户名，一般是root</p>
-<p>点击连接后，选择安全文件传输即可。</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">put <span class="regexp">/Users/</span>Documents<span class="regexp">/www /</span></div></pre></td></tr></table></figure>
+<h3 id="题外话："><a href="#题外话：" class="headerlink" title="题外话："></a>题外话：</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">sftp</span> <span class="selector-tag">root</span>@<span class="keyword">120</span>.<span class="keyword">100</span>.<span class="keyword">100</span>.<span class="keyword">100</span> // 与远程服务器连接文件传输</div><div class="line">put /Users/Documents/www /</div></pre></td></tr></table></figure>
 <h2 id="3-服务器端下载zip工具"><a href="#3-服务器端下载zip工具" class="headerlink" title="3. 服务器端下载zip工具"></a>3. 服务器端下载zip工具</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> -y unzip zip</div></pre></td></tr></table></figure>
 <h2 id="解压zip文件"><a href="#解压zip文件" class="headerlink" title="解压zip文件"></a>解压zip文件</h2><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unzip <span class="keyword">file</span>.<span class="keyword">zip</span> -<span class="keyword">d</span> filedir</div></pre></td></tr></table></figure>
+<h2 id="进入server文件夹内"><a href="#进入server文件夹内" class="headerlink" title="进入server文件夹内"></a>进入server文件夹内</h2><p>inde.js 是你的node入口文件</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">node</span> <span class="title">index</span>.js</div><div class="line">或者</div><div class="line">pm2 <span class="literal">start</span> index.js</div></pre></td></tr></table></figure>
+<h2 id="高效的方法"><a href="#高效的方法" class="headerlink" title="高效的方法"></a>高效的方法</h2><p>上面的方法虽然可行，但是每次改代码后再上传实在是太麻烦啦，直接用pm2一键上传.</p>
 
                     
                     <!-- Tags Bottom -->
@@ -192,6 +191,10 @@
     <h3>Recent Posts</h3>
     
         <p>
+            <a href="/LHHYuan/2018/03/27/算法学习笔记--对半搜索/">算法学习笔记--对半搜索</a>
+        </p>
+    
+        <p>
             <a href="/LHHYuan/2018/03/27/node学习笔记--mysql/">node学习笔记--mysql</a>
         </p>
     
@@ -205,10 +208,6 @@
     
         <p>
             <a href="/LHHYuan/2018/03/25/js学习笔记--canvas/">js学习笔记--canvas方法</a>
-        </p>
-    
-        <p>
-            <a href="/LHHYuan/2018/03/23/数组的深拷贝/">数组的深拷贝</a>
         </p>
     
 </div>
@@ -256,7 +255,7 @@
                 
             </div>
             <div class="f6 f5-ns center tc white pt5 fw3">
-                @肥源<a class="link dim white" href="https://www.jsman.top/tab/home.html">肥源</a>
+                @<a class="link dim white" href="https://www.jsman.top/tab/home.html">肥源</a>
             </div>
         </div>
     </div>
