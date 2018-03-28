@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="wepy开发问题汇总"/>
+        <meta property="og:title" content="Yuan"/>
     
 
     <!--Open Graph Description-->
@@ -33,7 +33,7 @@
 
     <!--Type page-->
     
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
     
 
     <!--Page Cover-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>wepy开发问题汇总 - Yuan</title>
+    <title>page - Yuan</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -112,14 +112,14 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">wepy开发问题汇总</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-01-25</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">欢迎来到肥源的博客</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">写出优雅代码，成就完美人生</p>
         </div>
     </div>
 
     <!-- Icon -->
     <div class="relative w-100 mw8 center white dn dn-m db-ns">
-        <i class="header-icon fa fa-file-text-o"></i>
+        <i class="header-icon fa fa fa-magic"></i>
     </div>
 </div>
 
@@ -127,121 +127,74 @@
 <div class="w-100 ph2 ph4-m ph5-l mv5 mv6-l">
     <div class="content">
         <div class="mw8 center">
-            <div class="cf">
-                <div class="fl w-100 w-70-l mw7 left fw3 lh-copy pr4-ns pr0-m post-content">
-                    <!-- Tags Vertical -->
-                    
-
-                    <!-- Main Post Content -->
-                    <h2 id="wepy开发问题汇总"><a href="#wepy开发问题汇总" class="headerlink" title="wepy开发问题汇总"></a>wepy开发问题汇总</h2><ol>
-<li><p>不能新建空的wep文件，不然build后会一直报错</p>
-</li>
-<li><p>import 组件时不能带.wpy</p>
-</li>
-<li><p>不支持background: url(‘’)</p>
-</li>
-<li><p>写路由时，pages前不能加斜杠,是绝对路径</p>
-</li>
-<li><p>写判断时，可以在data里写一个flag属性，data={ flag: true }</p>
-</li>
-<li><p>写menu-btn时，用到了wepy.createAnimation()方法创建了一个实例animatoin对象,再将animation使用方法。三个view组成三条斜杠，上面和下面用rotate方法，中间是用opcity方法实现三条杠变为叉号的动效，左边弹出的按钮使用translate实现</p>
-</li>
-<li><p>多个元素一个绑定类似的函数是用参数代替创建多个函数</p>
-</li>
-<li><p>实现中间向两边展开的动画是用margin: 0 50%; -&gt; margin: 0 -50% </p>
-</li>
-<li><p>新建的wpy文件不仅不能为空而且template里面要有内容，不然不会生成wxml</p>
-</li>
-<li><p>scroll-view要给定width，不然左右滑的时候页面会一起跟着滑</p>
-</li>
-<li><p>在函数运行周期之外的函数里去修改数据需要手动调用$apply方法</p>
-</li>
-<li><p>repeat获取当前组件对index值可以用 this.$index获取当前组件对索引值</p>
-</li>
-<li><p>运用repeat时数组须为一维数组，不能为二维数组</p>
-</li>
-<li><p>block这个标签没有意义，用于wx:if的判断</p>
-</li>
-<li><p>dcard网站分析</p>
-</li>
-<li><p>text-overflow: ellipsis;</p>
-</li>
-<li><p>导航和showToast不能一起用，应该设置定时器<br>注意问题：加载快不快，容不容易推出小程序</p>
-</li>
-</ol>
-
-                    
-                    <!-- Tags Bottom -->
-                    
-
-                    <!-- Comments -->
-                    
-
-
-
-                </div>
-                <div class="fl w-100 w-30-l center fw3 lh-copy pl4-ns tl black-50">
-                    
-                    <hr class="dn-l mw4 black-50 mt5" />
-                    
-                    <!-- Widget 1: About -->
-                    <div class="mt5 mt0-l">
-    <article class="dt db-l mw8 mw8-m mw5-ns center ml0-l bg-white mv3">
-        <div class="dn dtc-m db-l v-mid tc pr4 pr0-l" style="min-width: 6rem;">
-            <img src="https://avatars3.githubusercontent.com/u/23083153?s=400&u=d0e6e69d7327634eb7bb5d4a59b1512e820ec002&v=4" class="mb4-l br-100 h3 w3 h4-l w4-l dib" title="Yuan">
-        </div>
-        <div class="dtc db-l v-mid lh-copy measure center f6 black-50 tj">
-            本人喜欢前端，喜欢熬夜，喜欢湖人队，喜欢...
-        </div>
-    </article>
-</div>
-
-                    <hr class="dn-l mw4 black-50 mt5" />
-                    
-                    <!-- Widget 2: Categories -->
-                    
-                        <div class="mt5 tc tl-l">
-    <h3>Categories</h3>
-    
-        <p>
-            <a href="/LHHYuan/categories/Study/">Study</a>
-        </p>
-    
-</div>
-
-
-                        <hr class="dn-l mw4 black-50 mt5" />
-                    
-
-                    <!-- Widget 3: Recent Posts -->
-                    <div class="mt5 tc tl-l">
-    <h3>Recent Posts</h3>
-    
-        <p>
-            <a href="/LHHYuan/2018/03/28/个人简历/">个人简历</a>
-        </p>
-    
-        <p>
-            <a href="/LHHYuan/2018/03/28/链接/">链接</a>
-        </p>
-    
-        <p>
-            <a href="/LHHYuan/2018/03/28/算法笔记/">算法学习笔记--对半搜索</a>
-        </p>
-    
-        <p>
-            <a href="/LHHYuan/2018/03/27/python学习计划/">python学习计划</a>
-        </p>
-    
-        <p>
-            <a href="/LHHYuan/2018/03/27/算法学习笔记--对半搜索/">算法学习笔记--对半搜索</a>
-        </p>
-    
-</div>
-                </div>
+            
+                <a href="/LHHYuan/2017/09/18/自定义视频网页/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
+        <div class="dtc v-mid w-90 black-70">
+            <div>
+                
+                    <span class="f5 fw3 lh-copy pr4">2017-09-18</span> 
+                
+                
             </div>
+            <span class="f3 fw3 lh-copy">自定义视频网页<span>
+        </div>
+        <div class="dtc v-mid w-10 f1 black-50 tr">
+            <i class="fa fa-file-text-o"></i>
         </div>
     </div>
+</a>
+            
+                <a href="/LHHYuan/2017/09/18/http学习笔记--http方法/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
+        <div class="dtc v-mid w-90 black-70">
+            <div>
+                
+                    <span class="f5 fw3 lh-copy pr4">2017-09-18</span> 
+                
+                
+            </div>
+            <span class="f3 fw3 lh-copy">http学习笔记--http方法<span>
+        </div>
+        <div class="dtc v-mid w-10 f1 black-50 tr">
+            <i class="fa fa-file-text-o"></i>
+        </div>
+    </div>
+</a>
+            
+                <a href="/LHHYuan/2017/09/18/babel介绍/">
+    <div class="dt w-100 hover-border-main-color pointer pa3 border-color bl mv4">
+        <div class="dtc v-mid w-90 black-70">
+            <div>
+                
+                    <span class="f5 fw3 lh-copy pr4">2017-09-18</span> 
+                
+                
+            </div>
+            <span class="f3 fw3 lh-copy">Babel<span>
+        </div>
+        <div class="dtc v-mid w-10 f1 black-50 tr">
+            <i class="fa fa-file-text-o"></i>
+        </div>
+    </div>
+</a>
+            
+        </div>
+    </div>
+    
+    <div class="flex items-center justify-center pa4">
+        <a href="/LHHYuan/page/3/" 
+            class="f5 no-underline inline-flex items-center pa3 ba border-box mr4 gray hover-border-main-color hover-text-main-color">
+            <i class="w1 pr2 fa fa-chevron-left" aria-hidden="true"></i>
+            <span class="pl1">Previous</span>
+        </a>
+        <a href="/LHHYuan/" 
+            class="f5 no-underline inline-flex items-center pa3 ba border-box light-gray cursor-default">
+            <span class="pr1">Next</span>
+            <i class="w1 pl2 fa fa-chevron-right" aria-hidden="true"></i>
+        </a>
+    </div>
+
 </div>
 
 

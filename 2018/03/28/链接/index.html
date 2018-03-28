@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="算法学习笔记--对半搜索"/>
+        <meta property="og:title" content="链接"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>算法学习笔记--对半搜索 - Yuan</title>
+    <title>链接 - Yuan</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -112,8 +112,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">算法学习笔记--对半搜索</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-03-27</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">链接</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-03-28</p>
         </div>
     </div>
 
@@ -133,15 +133,20 @@
                     
 
                     <!-- Main Post Content -->
-                    <h1 id="对半搜索"><a href="#对半搜索" class="headerlink" title="对半搜索"></a>对半搜索</h1><p>对半搜索是二分搜索的一种</p>
-<p>先上出代码块</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">search</span> <span class="params">(x, left, right)</span> &#123;</span></div><div class="line">  <span class="keyword">if</span> (<span class="keyword">left</span> &lt;= <span class="keyword">right</span>) &#123;</div><div class="line">    <span class="keyword">let</span> <span class="keyword">m</span> = parseInt((<span class="keyword">left</span> + <span class="keyword">right</span>) / <span class="number">2</span>)</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">x</span> &gt; arr[<span class="keyword">m</span>])</div><div class="line">      <span class="keyword">return</span> <span class="built_in">search</span>(<span class="keyword">x</span>, <span class="keyword">m</span> + <span class="number">1</span>, <span class="keyword">right</span>)</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">x</span> &lt; arr[<span class="keyword">m</span>])</div><div class="line">      <span class="keyword">return</span> <span class="built_in">search</span>(<span class="keyword">x</span>, <span class="keyword">left</span>, <span class="keyword">m</span> - <span class="number">1</span>)</div><div class="line">      <span class="keyword">else</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">m</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> -<span class="number">1</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">search</span>(<span class="number">2</span>, <span class="number">0</span>, <span class="number">9</span>)</div></pre></td></tr></table></figure>
-<p>叫对半搜索是因为</p>
-<figure class="highlight coq"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">m = (<span class="built_in">left</span> + <span class="built_in">right</span>) / <span class="number">2</span></div></pre></td></tr></table></figure>
-<p>这里left，right都是下标</p>
-<p>left：左边界</p>
-<p>right： 右边界</p>
-<p>x: 待查元素</p>
+                    <h1 id="web"><a href="#web" class="headerlink" title="web"></a>web</h1><p><a href="https://zhangguixu.gitbooks.io/front-end/content/basis/basis/browser.html" target="_blank" rel="external">前端之路</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MjM5Mjg4NDMwMA==&amp;mid=2652973793&amp;idx=1&amp;sn=82419c590579b4013606a39392492c17&amp;scene=21#wechat_redirect" target="_blank" rel="external">前端技能图谱</a></p>
+<h1 id="js"><a href="#js" class="headerlink" title="js"></a>js</h1><p><a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="external">es6阮一峰</a></p>
+<h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><p><a href="http://jerryzou.com/posts/cookie-and-web-storage/" target="_blank" rel="external">详说 Cookie, LocalStorage 与 SessionStorage</a></p>
+<h1 id="node"><a href="#node" class="headerlink" title="node"></a>node</h1><p><a href="http://expressjs.com/zh-cn/" target="_blank" rel="external">Express框架文档</a></p>
+<p><a href="https://www.nodebeginner.org/index-zh-cn.html" target="_blank" rel="external">Node入门</a></p>
+<p><a href="http://nqdeng.github.io/7-days-nodejs/" target="_blank" rel="external">七天学会node.js</a></p>
+<h1 id="jq"><a href="#jq" class="headerlink" title="jq"></a>jq</h1><p><a href="http://jquery.cuishifeng.cn/" target="_blank" rel="external">jqueryAPI中文文档</a></p>
+<p><a href="http://www.nowamagic.net/librarys/books/contents/jquery" target="_blank" rel="external">Jquery魔法</a></p>
+<p><a href="http://i5ting.github.io/How-to-write-jQuery-plugin/build/jquery.plugin.html" target="_blank" rel="external">Jquery插件学习</a></p>
+<h1 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h1><p><a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/#The_rendering_engines_threads" target="_blank" rel="external">浏览器的工作原理</a></p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p><a href="https://wido.me/sunteya/understand-bashrc-and-profile" target="_blank" rel="external">理解 bashrc 和 profile</a></p>
+<h1 id="python"><a href="#python" class="headerlink" title="python"></a>python</h1><p><a href="https://docs.python.org/2/library/functions.html" target="_blank" rel="external">python函数</a></p>
+<p><a href="https://learnpythonthehardway.org/book/ex1.html" target="_blank" rel="external">learn hard python</a></p>
 
                     
                     <!-- Tags Bottom -->

@@ -133,16 +133,35 @@
                     
 
                     <!-- Main Post Content -->
-                    <h1 id="部署vue项目到服务器"><a href="#部署vue项目到服务器" class="headerlink" title="部署vue项目到服务器"></a>部署vue项目到服务器</h1><h2 id="1-打包dist文件"><a href="#1-打包dist文件" class="headerlink" title="1. 打包dist文件"></a>1. 打包dist文件</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">run</span><span class="bash"> build</span></div></pre></td></tr></table></figure>
+                    <h1 id="部署vue项目到服务器"><a href="#部署vue项目到服务器" class="headerlink" title="部署vue项目到服务器"></a>部署vue项目到服务器</h1><p>前提：</p>
+<ul>
+<li><p>本地和服务器可以ssh连接</p>
+</li>
+<li><p>本地和服务器都可以和github连接</p>
+</li>
+</ul>
+<h2 id="直接上传文件到服务器"><a href="#直接上传文件到服务器" class="headerlink" title="直接上传文件到服务器"></a>直接上传文件到服务器</h2><h3 id="1-打包dist文件"><a href="#1-打包dist文件" class="headerlink" title="1.打包dist文件"></a>1.打包dist文件</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">run</span><span class="bash"> build</span></div></pre></td></tr></table></figure>
 <p>会生成一个dist文件夹，这个文件夹就是打包好的文件夹。</p>
-<h2 id="2-上传文件到服务器"><a href="#2-上传文件到服务器" class="headerlink" title="2. 上传文件到服务器"></a>2. 上传文件到服务器</h2><p>本地把dist，server， package.json打包为一个文件，再压缩为zip文件包，上传到服务器。</p>
-<h3 id="题外话："><a href="#题外话：" class="headerlink" title="题外话："></a>题外话：</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">sftp</span> <span class="selector-tag">root</span>@<span class="keyword">120</span>.<span class="keyword">100</span>.<span class="keyword">100</span>.<span class="keyword">100</span> // 与远程服务器连接文件传输</div><div class="line">put /Users/Documents/www /</div></pre></td></tr></table></figure>
-<h2 id="3-服务器端下载zip工具"><a href="#3-服务器端下载zip工具" class="headerlink" title="3. 服务器端下载zip工具"></a>3. 服务器端下载zip工具</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> -y unzip zip</div></pre></td></tr></table></figure>
-<h2 id="解压zip文件"><a href="#解压zip文件" class="headerlink" title="解压zip文件"></a>解压zip文件</h2><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unzip <span class="keyword">file</span>.<span class="keyword">zip</span> -<span class="keyword">d</span> filedir</div></pre></td></tr></table></figure>
-<h2 id="进入server文件夹内"><a href="#进入server文件夹内" class="headerlink" title="进入server文件夹内"></a>进入server文件夹内</h2><p>inde.js 是你的node入口文件</p>
+<h3 id="2-上传文件到服务器"><a href="#2-上传文件到服务器" class="headerlink" title="2.上传文件到服务器"></a>2.上传文件到服务器</h3><p>本地把dist，server， package.json打包为一个文件，再压缩为zip文件包，上传到服务器。</p>
+<h4 id="题外话："><a href="#题外话：" class="headerlink" title="题外话："></a>题外话：</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">sftp</span> <span class="selector-tag">root</span>@<span class="keyword">120</span>.<span class="keyword">100</span>.<span class="keyword">100</span>.<span class="keyword">100</span> // 与远程服务器连接文件传输</div><div class="line">put /Users/Documents/www /</div></pre></td></tr></table></figure>
+<h3 id="3-服务器端下载zip工具"><a href="#3-服务器端下载zip工具" class="headerlink" title="3.服务器端下载zip工具"></a>3.服务器端下载zip工具</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> -y unzip zip</div></pre></td></tr></table></figure>
+<h3 id="4-解压zip文件"><a href="#4-解压zip文件" class="headerlink" title="4.解压zip文件"></a>4.解压zip文件</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unzip <span class="keyword">file</span>.<span class="keyword">zip</span> -<span class="keyword">d</span> filedir</div></pre></td></tr></table></figure>
+<h3 id="5-进入server文件夹内"><a href="#5-进入server文件夹内" class="headerlink" title="5.进入server文件夹内"></a>5.进入server文件夹内</h3><p>inde.js 是你的node入口文件</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">node</span> <span class="title">index</span>.js</div><div class="line">或者</div><div class="line">pm2 <span class="literal">start</span> index.js</div></pre></td></tr></table></figure>
-<h2 id="高效的方法"><a href="#高效的方法" class="headerlink" title="高效的方法"></a>高效的方法</h2><p>上面的方法虽然可行，但是每次改代码后再上传实在是太麻烦啦，直接用pm2一键上传.</p>
-
+<h2 id="pm2部署项目到服务器"><a href="#pm2部署项目到服务器" class="headerlink" title="pm2部署项目到服务器"></a>pm2部署项目到服务器</h2><h3 id="1-pm2生成ecosystem-config-js"><a href="#1-pm2生成ecosystem-config-js" class="headerlink" title="1.pm2生成ecosystem.config.js"></a>1.pm2生成<code>ecosystem.config.js</code></h3><p>在项目根目录下执行下列命令</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">p<span class="name">m2</span> ecosystem</div></pre></td></tr></table></figure>
+<h3 id="2-配置ecosystem-config-js"><a href="#2-配置ecosystem-config-js" class="headerlink" title="2.配置ecosystem.config.js"></a>2.配置<code>ecosystem.config.js</code></h3><p>主要配置deploy部分</p>
+<p>deploy是一个对象，默认有两个属性</p>
+<p><code>production</code>和<code>dev</code></p>
+<p>下面是一个配置的例子</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="string">deploy :</span> &#123;</div><div class="line">  <span class="string">production :</span> &#123;</div><div class="line">    <span class="string">user :</span> <span class="string">'root'</span>,</div><div class="line">    <span class="string">host :</span> <span class="string">'120.79.57.242'</span>,</div><div class="line">    <span class="string">ref  :</span> <span class="string">'origin/master'</span>,</div><div class="line">    <span class="string">repo :</span> <span class="string">'git@github.com:Hubylida/rivermonite.git'</span>,</div><div class="line">    <span class="string">path :</span> <span class="string">'/var/www/rivermonitor'</span>,</div><div class="line">    <span class="string">'post-deploy'</span> : <span class="string">'npm install &amp;&amp; pm2 reload ecosystem.config.js --env production'</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-本地项目初始化到远程服务器端"><a href="#3-本地项目初始化到远程服务器端" class="headerlink" title="3.本地项目初始化到远程服务器端"></a>3.本地项目初始化到远程服务器端</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pm2 deploy ecosystem<span class="selector-class">.config</span><span class="selector-class">.js</span> production setup</div></pre></td></tr></table></figure>
+<h3 id="4-一键部署代码到服务器"><a href="#4-一键部署代码到服务器" class="headerlink" title="4.一键部署代码到服务器"></a>4.一键部署代码到服务器</h3><p>在本地项目，输入以下命令部署代码到服务器<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pm2 deploy ecosystem<span class="selector-class">.config</span><span class="selector-class">.js</span> production</div></pre></td></tr></table></figure></p>
+<h3 id="更新代码"><a href="#更新代码" class="headerlink" title="更新代码"></a>更新代码</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pm2 deploy ecosystem<span class="selector-class">.config</span><span class="selector-class">.js</span> production update</div></pre></td></tr></table></figure>
+<h2 id="在服务器上直接git-clone"><a href="#在服务器上直接git-clone" class="headerlink" title="在服务器上直接git clone"></a>在服务器上直接git clone</h2><h3 id="1-ssh连接服务器"><a href="#1-ssh连接服务器" class="headerlink" title="1.ssh连接服务器"></a>1.ssh连接服务器</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">ssh</span> <span class="selector-tag">root</span>@<span class="keyword">127</span>.<span class="keyword">0</span>.<span class="keyword">0</span>.<span class="keyword">1</span></div></pre></td></tr></table></figure>
+<h3 id="2-git下载项目到服务器"><a href="#2-git下载项目到服务器" class="headerlink" title="2.git下载项目到服务器"></a>2.git下载项目到服务器</h3><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="keyword">clone</span> <span class="title">项目地址</span></div></pre></td></tr></table></figure>
+<h3 id="3-打开项目，在server文件夹下，用pm2启动服务"><a href="#3-打开项目，在server文件夹下，用pm2启动服务" class="headerlink" title="3.打开项目，在server文件夹下，用pm2启动服务"></a>3.打开项目，在server文件夹下，用pm2启动服务</h3><p><code>server/</code></p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pm2 start <span class="keyword">index</span>.js</div></pre></td></tr></table></figure>
                     
                     <!-- Tags Bottom -->
                     
@@ -191,23 +210,23 @@
     <h3>Recent Posts</h3>
     
         <p>
+            <a href="/LHHYuan/2018/03/28/个人简历/">个人简历</a>
+        </p>
+    
+        <p>
+            <a href="/LHHYuan/2018/03/28/链接/">链接</a>
+        </p>
+    
+        <p>
+            <a href="/LHHYuan/2018/03/28/算法笔记/">算法学习笔记--对半搜索</a>
+        </p>
+    
+        <p>
+            <a href="/LHHYuan/2018/03/27/python学习计划/">python学习计划</a>
+        </p>
+    
+        <p>
             <a href="/LHHYuan/2018/03/27/算法学习笔记--对半搜索/">算法学习笔记--对半搜索</a>
-        </p>
-    
-        <p>
-            <a href="/LHHYuan/2018/03/27/node学习笔记--mysql/">node学习笔记--mysql</a>
-        </p>
-    
-        <p>
-            <a href="/LHHYuan/2018/03/26/部署vue项目到服务器小记/">部署vue项目到服务器小记</a>
-        </p>
-    
-        <p>
-            <a href="/LHHYuan/2018/03/25/http学习笔记--状态码/">http学习笔记--状态码</a>
-        </p>
-    
-        <p>
-            <a href="/LHHYuan/2018/03/25/js学习笔记--canvas/">js学习笔记--canvas方法</a>
         </p>
     
 </div>
