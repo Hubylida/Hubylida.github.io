@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="算法学习笔记--对半搜索"/>
+        <meta property="og:title" content="js学习笔记--原生js获取css的值"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>算法学习笔记--对半搜索 - Yuan</title>
+    <title>js学习笔记--原生js获取css的值 - Yuan</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -112,8 +112,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">算法学习笔记--对半搜索</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-03-28</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">js学习笔记--原生js获取css的值</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2017-09-18</p>
         </div>
     </div>
 
@@ -133,8 +133,36 @@
                     
 
                     <!-- Main Post Content -->
-                    <p><a href="&#39;https://www.jianshu.com/p/456af5480cee&#39;">二叉树前序，中序，后序遍历</a> </p>
-
+                    <h1 id="getComputedStyle"><a href="#getComputedStyle" class="headerlink" title="getComputedStyle"></a>getComputedStyle</h1><p>使用getComputedStyle也可以获取元素的css属性值，第一个参数填<code>元素</code>，第二个参数填<code>伪类</code>。<br>这个方法是只读的，不能修改。<br>用这个方法获取的值是元素最后显示的值，不是最原始的值。</p>
+<pre><code>&lt;html&gt;
+    &lt;head&gt;
+    ...
+    &lt;style&gt;
+        #test{
+            width: 500px;
+            height: 500px;
+            margin: auto;
+        }
+    &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;test&quot;&gt;&lt;/div&gt;
+        &lt;script&gt;
+            function $(element){
+                return document.querySelector(element);
+            }
+            var test = $(&apos;#test&apos;);
+            var style =  window.getComputedStyle(test,null);
+            console.log(style.width);// 500px
+            console.log(style.margin); // 0 702px
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>上面例子margin的值不是auto,而是元素当前css的值，jq的源码css()也不是用getComputedStyle()实现。</p>
+<p>getComputed返回的是一个对象，要获取具体的值，可以用<code>style.width</code>来获取，getPropertyValue(‘properrtyName’)可以直接获取。</p>
+<pre><code>var style = window.getComputedStyle(test,null).getPropertyValue(&apos;width&apos;);
+console.log(style);//500px
+</code></pre>
                     
                     <!-- Tags Bottom -->
                     
@@ -164,6 +192,18 @@
                     <hr class="dn-l mw4 black-50 mt5" />
                     
                     <!-- Widget 2: Categories -->
+                    
+                        <div class="mt5 tc tl-l">
+    <h3>Categories</h3>
+    
+        <p>
+            <a href="/LHHYuan/categories/Study/">Study</a>
+        </p>
+    
+</div>
+
+
+                        <hr class="dn-l mw4 black-50 mt5" />
                     
 
                     <!-- Widget 3: Recent Posts -->
