@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="js学习笔记--const用法"/>
+        <meta property="og:title" content="js实现观察者模式"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>js学习笔记--const用法 - Yuan</title>
+    <title>js实现观察者模式 - Yuan</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -112,8 +112,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">js学习笔记--const用法</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2017-09-18</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">js实现观察者模式</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-04-17</p>
         </div>
     </div>
 
@@ -133,26 +133,10 @@
                     
 
                     <!-- Main Post Content -->
-                    <h1 id="const用法"><a href="#const用法" class="headerlink" title="const用法"></a>const用法</h1><p>const定义一个常量</p>
-<pre><code>const a = 1;
-</code></pre><p>const的值不能改变，const的作用域和let一样，只在块级作用域内有效。</p>
-<p>const存在暂时性死区，可以认为存在变量提升，但是要等到执行完变量声明的语句后，调用才不会报错。</p>
-<p>const和let一样不能重复声明变量。</p>
-<p><strong>说点别的</strong></p>
-<p><code>Object.freeze</code> 方法</p>
-<pre><code>const foo = Object.freeze({});
-//常规模式下，下一行代码不报错
-//严格模式下，下一行代码报错
-foo.name = &quot;Yuan&quot;
-</code></pre><p>const保证的，并不是变量的值不能改动，而是变量指向的那个内存地处不能改动，不是变量的内存地址。</p>
-<pre><code>const foo = {};
-foo.name = &quot;Yuan&quot;; // 不报错
-
-foo = {} //报错
-</code></pre><blockquote>
-<p><strong><a href="http://es6.ruanyifeng.com/#docs/destructuring" target="_blank" rel="external">变量的结构赋值</a></strong></p>
+                    <blockquote>
+<p>转自 <a href="https://github.com/sunyongjian/blog/issues/13" target="_blank" rel="external">https://github.com/sunyongjian/blog/issues/13</a></p>
 </blockquote>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmitterEvent</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">this</span>._event = &#123;&#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  on (eventName, handler) &#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>._event[eventName]) &#123;</div><div class="line">      <span class="keyword">this</span>._event[eventName].push(handler);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">this</span>._event[eventName] = [handler];</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 上面的判断是为了给一个事件添加多个处理函数，按顺序执行</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  emit (eventName) &#123;</div><div class="line">    <span class="keyword">var</span> events = <span class="keyword">this</span>._event[eventName]; <span class="comment">// 获取改事件下的处理函数数组</span></div><div class="line">    <span class="keyword">var</span> otherArgs = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>,<span class="number">1</span>); <span class="comment">// 获取传进来的参数</span></div><div class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>; <span class="comment">// 这里的this指向实例化的对象</span></div><div class="line">    <span class="keyword">if</span> (events) &#123; <span class="comment">// 判断有没有注册函数，防止触发没有注册的事件</span></div><div class="line">      events.forEach(<span class="function"><span class="params">event</span> =&gt;</span> event.apply(that, otherArgs)); <span class="comment">// 按顺序执行处理函数</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  off (eventNames, handler) &#123;</div><div class="line">    <span class="keyword">var</span> events = <span class="keyword">this</span>._event[eventName];</div><div class="line">    <span class="keyword">if</span> (events) &#123;</div><div class="line">      <span class="keyword">this</span>._event[eventName] = events.filter(<span class="function"><span class="params">event</span> =&gt;</span> event !== handler); <span class="comment">// 删除该事件下某一个处理函数</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  once (eventName, handler) &#123;</div><div class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">func</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">0</span>);</div><div class="line">      handler.apply(that, args);</div><div class="line">      <span class="keyword">this</span>.off(eventName, func);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.on(eventName, func)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> event = <span class="keyword">new</span> EmitterEvent();</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span> (<span class="params">sth</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'a'</span>, sth)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span> (<span class="params">sth</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'b'</span>, sth)</div><div class="line">&#125;</div><div class="line"></div><div class="line">event.on(<span class="string">'dosth'</span>, a);</div><div class="line">event.emit(<span class="string">'dosth'</span>, <span class="string">'play'</span>);</div><div class="line"></div><div class="line"><span class="comment">// a play</span></div></pre></td></tr></table></figure>
                     
                     <!-- Tags Bottom -->
                     
@@ -182,18 +166,6 @@ foo = {} //报错
                     <hr class="dn-l mw4 black-50 mt5" />
                     
                     <!-- Widget 2: Categories -->
-                    
-                        <div class="mt5 tc tl-l">
-    <h3>Categories</h3>
-    
-        <p>
-            <a href="/LHHYuan/categories/Study/">Study</a>
-        </p>
-    
-</div>
-
-
-                        <hr class="dn-l mw4 black-50 mt5" />
                     
 
                     <!-- Widget 3: Recent Posts -->
