@@ -162,18 +162,18 @@
 <h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><h3 id="1-快速启动-——-极大提升加载速度（important）"><a href="#1-快速启动-——-极大提升加载速度（important）" class="headerlink" title="1. 快速启动 —— 极大提升加载速度（important）"></a>1. 快速启动 —— 极大提升加载速度（important）</h3><p>快速启动应用，并行发起 Bundle 加载&amp;拉取初始数据。相信大家已经发现了，SPA 初始化时候，不得不等待 bundle 返回并执行后，才会发起数据加载。</p>
 <p>如下示例代码：</p>
 <pre><code>// app.js
-Promise.all([load(&apos;bundle&apos;), load(&apos;data&apos;)])
+Promise.all([load(&#39;bundle&#39;), load(&#39;data&#39;)])
 </code></pre><h3 id="2-根据路由拆分-——-减少初始加载体积"><a href="#2-根据路由拆分-——-减少初始加载体积" class="headerlink" title="2. 根据路由拆分 —— 减少初始加载体积"></a>2. 根据路由拆分 —— 减少初始加载体积</h3><p>利用异步加载方式，在路由注册时提供异步拉取组件的方法，仅在需要进入对应路由时，对应组件才会被加载进来。</p>
 <pre><code>route({
-  Home: () =&gt; import(&apos;@/coms/home&apos;),
-  About: () =&gt; import(&apos;@/coms/about&apos;)
+  Home: () =&gt; import(&#39;@/coms/home&#39;),
+  About: () =&gt; import(&#39;@/coms/about&#39;)
 })
 </code></pre><h3 id="3-独立打包异步组件公共-Bundle-——-提高复用性-amp-缓存命中率"><a href="#3-独立打包异步组件公共-Bundle-——-提高复用性-amp-缓存命中率" class="headerlink" title="3. 独立打包异步组件公共 Bundle —— 提高复用性&amp;缓存命中率"></a>3. 独立打包异步组件公共 Bundle —— 提高复用性&amp;缓存命中率</h3><p>在Home和About等路由里面 ，可能公用一套 UI 组件， 若不将异步加载公用 组件统一打包，每次加载 路由时，都会额外加载一套 UI 组件。通过将公用组件提取打包成Vendor，可以减少下次进入路由加载体积与时间。</p>
 <p>BTW：在<code>webpack &lt; 4</code>时，依旧需要手动维护异步加载组件公用组件。<code>webpack4</code>提供更丰富的异步组件抽离方案。</p>
 <h3 id="4-组件预加载-——-减少页面切换时间"><a href="#4-组件预加载-——-减少页面切换时间" class="headerlink" title="4. 组件预加载 —— 减少页面切换时间"></a>4. 组件预加载 —— 减少页面切换时间</h3><p>当首屏加载完毕后，设备&amp;网络处于空闲状态，可以 对其他路由组件进行预加载，以便提升页面切换性能。</p>
 <p>预加载是一个非常繁琐的过程，我们可以设计一个极小启动器，在页面渲染后快速预加载后续组件：</p>
 <pre><code>// 所有包含Page的路由组件均会被预加载
-boostraper.loadMatch(&apos;Page&apos;)
+boostraper.loadMatch(&#39;Page&#39;)
 </code></pre><h3 id="5-使用-ESM-语法-——-按需打包工具库，降低-Bundle-体积"><a href="#5-使用-ESM-语法-——-按需打包工具库，降低-Bundle-体积" class="headerlink" title="5. 使用 ESM 语法 —— 按需打包工具库，降低 Bundle 体积"></a>5. 使用 ESM 语法 —— 按需打包工具库，降低 Bundle 体积</h3><p><code>webpack4</code>在 ESM <code>tree shaking</code>上做了极大优化，使得在引用工具库时候真正做到”按需打包”，这要求无论是自己开发的工具库，抑或使用第三方工具库，打包&amp;使用 ESM 版本非常必要。</p>
 <h3 id="6-配合-PWA-使用，口感更佳-——-降低首屏渲染时间，极大提升体验"><a href="#6-配合-PWA-使用，口感更佳-——-降低首屏渲染时间，极大提升体验" class="headerlink" title="6. 配合 PWA 使用，口感更佳 —— 降低首屏渲染时间，极大提升体验"></a>6. 配合 PWA 使用，口感更佳 —— 降低首屏渲染时间，极大提升体验</h3><p>根据 PWA 缓存策略，可以将访问的页面index.html缓存起来，下次打开时候优先利用缓存，再发起请求更新缓存。这使得 SPA 应用几乎不需要额外时间便可加载应用首屏文档流。</p>
 <h2 id="体验优化"><a href="#体验优化" class="headerlink" title="体验优化"></a>体验优化</h2><h3 id="1-构建你的极简Skeleton-Page"><a href="#1-构建你的极简Skeleton-Page" class="headerlink" title="1. 构建你的极简Skeleton Page"></a>1. 构建你的极简Skeleton Page</h3><p>SPA 首屏加载面临较长时间白屏，骨架图是一个完美的”缓兵之计”。在谷歌研究员的文章 中有提到，骨架图对用户体验有极大的提升：</p>

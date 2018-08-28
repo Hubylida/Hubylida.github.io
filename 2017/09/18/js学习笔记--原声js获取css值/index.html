@@ -151,7 +151,7 @@
             function $(element){
                 return document.querySelector(element);
             }
-            var test = $(&apos;#test&apos;);
+            var test = $(&#39;#test&#39;);
             var style =  window.getComputedStyle(test,null);
             console.log(style.width);// 500px
             console.log(style.margin); // 0 702px
@@ -160,7 +160,7 @@
 &lt;/html&gt;
 </code></pre><p>上面例子margin的值不是auto,而是元素当前css的值，jq的源码css()也不是用getComputedStyle()实现。</p>
 <p>getComputed返回的是一个对象，要获取具体的值，可以用<code>style.width</code>来获取，getPropertyValue(‘properrtyName’)可以直接获取。</p>
-<pre><code>var style = window.getComputedStyle(test,null).getPropertyValue(&apos;width&apos;);
+<pre><code>var style = window.getComputedStyle(test,null).getPropertyValue(&#39;width&#39;);
 console.log(style);//500px
 </code></pre>
                     
