@@ -149,30 +149,30 @@
 <p>贴几个重要的代码</p>
 <p>点击进度条效果和播放进度的实现</p>
 <p>两层重合的div,背景色不一样,一条隐藏,一条显示,点击时,用e.offset确定点击的位置相对于显示的一条的位置,隐藏的一条的宽度就是 x, 再用x和w之商作为百分比和视频长度相乘就得到当前视频跳转的播放位置.同时要改变css显示出效果.</p>
-<pre><code>$(&#39;.v_ctl_du&#39;).on(&#39;click&#39;, function (e) {
-    var w = $(&#39;#ctl_du_a&#39;).width(),
+<pre><code>$(&apos;.v_ctl_du&apos;).on(&apos;click&apos;, function (e) {
+    var w = $(&apos;#ctl_du_a&apos;).width(),
         x = e.offsetX;
     window.per = (x / w).toFixed(3);//全局变量
     var duration = player.duration;
     player.currentTime = (duration * window.per).toFixed(0);
-    $(&#39;#ctl_du_b&#39;).css(&#39;width&#39;, x + &#39;px&#39;);
+    $(&apos;#ctl_du_b&apos;).css(&apos;width&apos;, x + &apos;px&apos;);
 });
 </code></pre><p>在视频播放时要时刻获取播放的进度,然后改变css,进度条就会更新样式,时间也会跟着改变.</p>
-<pre><code>$player.on(&#39;timeupdate&#39;, function () {
+<pre><code>$player.on(&apos;timeupdate&apos;, function () {
     var time = player.currentTime.toFixed(1);
     minutes = Math.floor((time / 60) % 60);
     seconds = Math.floor(time % 60);
     if (seconds &lt; 10) {
-        seconds = &#39;0&#39; + seconds;
+        seconds = &apos;0&apos; + seconds;
     }
-    $(&#39;#ctl_dur&#39;).text(minutes + &#39;:&#39; + seconds);
-    var w = $(&#39;#ctl_du_a&#39;).width();
+    $(&apos;#ctl_dur&apos;).text(minutes + &apos;:&apos; + seconds);
+    var w = $(&apos;#ctl_du_a&apos;).width();
     if (player.duration) {
         window.per = (time / player.duration).toFixed(3);
     } else {
         window.per = 0;
     }
-    $(&#39;#ctl_du_b&#39;).css(&#39;width&#39;, (window.per * w).toFixed(0) + &#39;px&#39;);
+    $(&apos;#ctl_du_b&apos;).css(&apos;width&apos;, (window.per * w).toFixed(0) + &apos;px&apos;);
     if (player.ended) {
         pause();
     }
@@ -180,16 +180,16 @@
 </code></pre><p>动画效果的实现<br>animate三个参数,第一个是样式的对象,第二个是时间,第三个是一个回掉函数.</p>
 <pre><code>(function () {
     var css = {
-        &#39;top&#39;: &#39;49%&#39;
+        &apos;top&apos;: &apos;49%&apos;
     };
-    $(&#39;.cloth_btn&#39;).animate(css, 400, rowBack);
+    $(&apos;.cloth_btn&apos;).animate(css, 400, rowBack);
     function rowBack() {
         if (css.top === &quot;49%&quot;) {
             css.top = &quot;51%&quot;;
         } else if (css.top === &quot;51%&quot;) {
             css.top = &quot;49%&quot;;
         }
-        $(&#39;.cloth_btn&#39;).animate(css, 400, rowBack);
+        $(&apos;.cloth_btn&apos;).animate(css, 400, rowBack);
     }
 })();
 </code></pre>
