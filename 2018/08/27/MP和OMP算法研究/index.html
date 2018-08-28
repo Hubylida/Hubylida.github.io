@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="下雨了"/>
+        <meta property="og:title" content="MP和OMP算法研究"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>下雨了 - Yuan</title>
+    <title>MP和OMP算法研究 - Yuan</title>
 
     <!-- Tachyons Core CSS -->
     <link rel="stylesheet" href="//unpkg.com/tachyons/css/tachyons.min.css">
@@ -112,8 +112,8 @@
     <!-- Title -->
     <div class="w-100 mw8 center vh-40 dt">
         <div class="dtc v-mid white">
-            <h1 class="f1-l f2-m tc tc-m tl-ns">下雨了</h1>
-            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2017-09-18</p>
+            <h1 class="f1-l f2-m tc tc-m tl-ns">MP和OMP算法研究</h1>
+            <p class="f4 fw3 pab-100px tc tc-m tl-ns">2018-08-27</p>
         </div>
     </div>
 
@@ -133,11 +133,35 @@
                     
 
                     <!-- Main Post Content -->
-                    <h2 id="下雨了"><a href="#下雨了" class="headerlink" title="下雨了"></a>下雨了</h2><p>早上起来窗外便下起了大雨，天是灰蒙蒙的。</p>
-<p>往往在天色灰暗时，待在明亮的房间里，会有特别安心的感觉。</p>
-<p>看着远处灰色的天空，总能让我想起过往的种种，想起小时候下雨的场景。</p>
-<p>我喜欢倒水般的大雨，雷声大，雨水碰撞地面的声音也大，雨滴筑成屏障，人待在房间，好像被包围着。</p>
-<p>这时候，心情忽然就变得忧愁，人好像静下来，明明没有烦心事却开心不起来，可能自然把我吓老实了。</p>
+                    <h1 id="MP和OMP算法研究"><a href="#MP和OMP算法研究" class="headerlink" title="MP和OMP算法研究"></a>MP和OMP算法研究</h1><p>在先介绍MP算法前先介绍一个公式:<br>$$Y = DX$$</p>
+<p>Y是原始信号,D是字典矩阵,每一行代表一个样本,每一列是一个原子可以理解为特征,每一列是独特的特证,如果以文本举例的话,每一行是一个句子,每一列是所有汉字中的一个字.X是要求的稀疏信号,可以表示为原子的线性组合.</p>
+<h2 id="MP算法介绍"><a href="#MP算法介绍" class="headerlink" title="MP算法介绍"></a>MP算法介绍</h2><p>以1993年的论文$Orthogonal\ Matching\ Pursuit: Recursive\ Function\ Approximation\ with\ Applications\ to\ Wavelet\ Decomposition$的符号为本文所用</p>
+<p>定义一个$Hilbert$空间的向量集$D = {x_i}$,其中的向量$x_n$满足归一化条件$|x<em>n|=1$.<br>在每次MP算法迭代的过程中的中间表示为:<br>$$f=\sum</em>{i=1}^{k}a<em>ix</em>{ni}+R_kf=f_k+R_kf$$<br>其中$a_i$表示我们要求的$f$的稀疏表示的系数,也可以看成是字典中原子的线性组合的系数,求出$x_i$就能求出$f$的稀疏表示,$f_k$为当前的近似,$R_kf$是当前的残差,初始化时$R_0f=f,f_0=0,k=1$.(公式里的$f$可以理解为$y$)</p>
+<p>定义D中原子$x_n$构成的基空间为$V$.</p>
+<p>MP算法是的思路是在每一次迭代时选择残差和D中原子内积最大的,即残差在空间$V$中投影最大的.证明如下:<br>$$<r_kf,x_n>=|R_kf||x_n|cos(\theta)=|R_kf|cos(\theta)$$</r_kf,x_n></p>
+<p>由数学知识可知$|R_kf|cos(\theta)$表示投影,其中$\theta$是向量$R_kf$和$x_n$的夹角.</p>
+<p>找到最大的内积后,更新如下:</p>
+<p>$$f_{k+1}=f_k+<r_kf,x_{n_{k+1}}>x<em>{n</em>{k+1}}$$</r_kf,x_{n_{k+1}}></p>
+<p>$$R_{k+1}=R_kf-<r_kf,x_{n_{k+1}}>x<em>{n</em>{k+1}}$$</r_kf,x_{n_{k+1}}></p>
+<p>$$k=k+1$$</p>
+<p>已知MP算法里第k+1项残差$R<em>{k+1}f$和$x</em>{n<em>{k+1}}$正交,因此内积为零$&lt;R</em>{k+1}f,x<em>{n</em>{k+1}}&gt;=0$,但不能保证$R_{k+1}f$和D中每一列原子都正交,所以在迭代过程中会出现次最优的情况,于是OMP算法被提出使残差和过往的每一个$x_k$都正交.这里不多叙述,基于上述的已知条件,我们可以得出以下结论:<br>$$|R<em>kf|^2=|R</em>{k+1}f|^2+|<r_kf,x_{n_{k+1}}>|^2$$</r_kf,x_{n_{k+1}}></p>
+<p>这个等式可以这么理解, 因为$R<em>{k+1}f$和$x</em>{n<em>{k+1}}$正交,所以有:<br>$$R</em>{k+1}f\ x<em>{n</em>{k+1}}=0$$<br>等式的后两项相乘为:<br>$$R_{k+1}f\ R<em>kf\ x</em>{n_{k+1}}=0$$</p>
+<p>我们可以把他们看成直角三角形的三条边,满足勾股定理因此有上面等式.(此为本人猜测没有具体考证,仅为方便理解)</p>
+<p>算法迭代N次后的最优解我们可以表示如下:<br>$$f<em>N=\sum</em>{k=0}^{N-1}<r_kf,x_{n_{k+1}}>x<em>{n</em>{k+1}}$$</r_kf,x_{n_{k+1}}></p>
+<p>这里$f_N$是原始输入$f$在$D$上最好的近似.</p>
+<h2 id="OMP算法介绍"><a href="#OMP算法介绍" class="headerlink" title="OMP算法介绍"></a>OMP算法介绍</h2><p>OMP算法作为MP算法的改进,有如下假设:<br>$$f=\sum_{n=1}^{k+1}a_n^kx<em>n+R</em>{k+1}f,\ with\ <r_kf,x_n>=0,\ n=1,…k$$</r_kf,x_n></p>
+<p>这个式子的第一项表示,字典的原子的线性组合,第二项为残差.这个式子还假设残差和每个原子都正交.</p>
+<p>k+1项表示为:<br>$$f=\sum_{n=1}^{k+1}a_n^{k+1}x<em>n+R</em>{k+1}f,\ with\ <r_{k+1}f,x_n>=0,\ n=1,…k+1$$</r_{k+1}f,x_n></p>
+<p>下面我们进行推导$a_k$,首先k+1项减去第k项</p>
+<p>$$\sum_{n=1}^k(a_n^{k+1}-a_n^{k})x<em>n+a</em>{k+1}^{k+1}x<em>{k+1}+R</em>{k+1}f-R_kf$$</p>
+<p>由于字典D的原子相互不一定正交,所以提出一个辅助模型:<br>$$x<em>{k+1}=\sum</em>{n=1}^kb_n^kx_n+\gamma_k,\ with\ &lt;\gamma_k,x_k&gt;=0,\ n=1,…k$$</p>
+<p>有了$x<em>{k+1}$,我们代入上面相减后的式子:<br>$$\sum</em>{n=1}^k(a_n^{k+1}-a_n^k+b<em>n^ka</em>{k+1}^{k+1})x<em>n+(a</em>{k+1}^{k+1}\gamma<em>{k}+R</em>{k+1}f-R_kf) = 0$$</p>
+<p>使这个式子成立的话,括号内的两项为零,于是得出:<br>$$a_n^{k+1}-a_n^k+b<em>n^ka</em>{k+1}^{k+1}=0$$<br>$$a<em>{k+1}^{k+1}\gamma</em>{k}+R_{k+1}f-R_kf=0$$</p>
+<p>令$a_{k+1}^{k+1}=a_k^k$:<br>$$a_n^{k+1}=a_n^k-a_kb_n^k$$</p>
+<p>对$a<em>{k+1}^{k+1}\gamma</em>{k}+R_{k+1}f-R_kf=0$进行变换:<br>$$a_k=\frac{<r_kf,x_{k+1}>}{|x<em>{k+1}^2|-\sum</em>{n=1}^kb_n^k<x_n,x_{k+1}>}$$</x_n,x_{k+1}></r_kf,x_{k+1}></p>
+<p>OMP算法的matlab代码如下</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="params">[A, res]</span> = <span class="title">OMP</span><span class="params">(D, X, L)</span></span></div><div class="line"></div><div class="line">residual = X;</div><div class="line">index = <span class="built_in">zeros</span>(L,<span class="number">1</span>);</div><div class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:L</div><div class="line">    proj = D' * residual;</div><div class="line">    [~, pos] = max(<span class="built_in">abs</span>(proj));</div><div class="line">    pos = pos(<span class="number">1</span>);</div><div class="line">    index(<span class="built_in">i</span>) = pos;</div><div class="line">    a = pinv(D(:,index(<span class="number">1</span>:<span class="built_in">i</span>))) * X;</div><div class="line">    residual = X - D(:,index(<span class="number">1</span>:<span class="built_in">i</span>)) * a;</div><div class="line">    res = norm(residual);</div><div class="line">    <span class="keyword">if</span> res &lt; <span class="number">1e-6</span></div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line">A = <span class="built_in">zeros</span>(<span class="built_in">size</span>(D,<span class="number">2</span>),<span class="number">1</span>);</div><div class="line">A(index(index~=<span class="number">0</span>)) = a;</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<p>其实算法很简单,就是找到字典D中和残差最匹配的原子集合,然后用原始信号除以它,就能得到所求的稀疏信号向量集.</p>
 
                     
                     <!-- Tags Bottom -->
@@ -173,7 +197,7 @@
     <h3>Categories</h3>
     
         <p>
-            <a href="/LHHYuan/categories/随笔/">随笔</a>
+            <a href="/LHHYuan/categories/Study/">Study</a>
         </p>
     
 </div>
